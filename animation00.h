@@ -1,0 +1,4 @@
+#ifndef ANIMATION00_H
+#define ANIMATION00_H
+
+#endif // ANIMATION00_H
