@@ -25,10 +25,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    led_lib.cpp \
+    tablemodes.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    led_lib.h \
+    debug.h \
+    tablemodes.h \
+    mode.h \
+    animation00.h
 
 FORMS += \
         mainwindow.ui
