@@ -35,7 +35,8 @@ HEADERS += \
     debug.h \
     tablemodes.h \
     mode.h \
-    animation00.h
+    animation00.h \
+    animation01.h
 
 FORMS += \
         mainwindow.ui

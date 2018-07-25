@@ -22,7 +22,7 @@ public:
         }
     }
 protected:
-    int randInt(int low, int high)
+    int random(int low, int high)
     {
         return qrand() % ((high + 1) - low) + low;
     }

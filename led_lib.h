@@ -40,6 +40,10 @@ typedef struct Color {
 void set_debug_text_flag(bool flag);
 void init_leds(QList<QPushButton*> buttons);
 
+void color_set(COLOR_TYPE *dest, COLOR_TYPE src);
+void color_add(COLOR_TYPE *dest, COLOR_TYPE src);
+void color_sub(COLOR_TYPE *dest, COLOR_TYPE src);
+
 Color color_create(COLOR_TYPE r, COLOR_TYPE g, COLOR_TYPE b);
 Color *led_get(byte x, byte y);
 void led_set(byte x, byte y, COLOR_TYPE r, COLOR_TYPE g, COLOR_TYPE b, OPER_FUNC(oper));

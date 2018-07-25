@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "animation00.h"
-
+#include "animation01.h"
 
 #define DEF_TIME_VAL 400
 
@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 void MainWindow::initModes()
 {
     modes = new TableModes();
+    modes->addMode(new Animation01());
     modes->addMode(new Animation00());
 }
 
