@@ -26,17 +26,41 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    led_lib.cpp \
-    tablemodes.cpp
+    FastLED/fastled.cpp \
+    FastLED/power_mgt.cpp \
+    timer.cpp \
+    FastLED/hsv2rgb.cpp \
+    matrixlib.cpp \
+    Effects/effectslist.cpp \
+    showmatrix.cpp
 
 HEADERS += \
         mainwindow.h \
-    led_lib.h \
-    debug.h \
-    tablemodes.h \
-    mode.h \
-    animation00.h \
-    animation01.h
+    animation02.h \
+    FastLED/fastled.h \
+    FastLED/controller.h \
+    FastLED/pixeltypes.h \
+    FastLED/color.h \
+    FastLED/lib8tion.h \
+    FastLED/lib8tion/math8.h \
+    FastLED/lib8tion/scale8.h \
+    FastLED/lib8tion/random8.h \
+    FastLED/lib8tion/trig8.h \
+    FastLED/fastled_config.h \
+    FastLED/power_mgt.h \
+    timer.h \
+    FastLED/hsv2rgb.h \
+    Effects/effect.h \
+    Effects/effectslist.h \
+    matrixlib.h \
+    Effects/erroreffect.h \
+    showmatrix.h \
+    Effects/testmode.h \
+    Effects/01_simple_rainbow.h \
+    Effects/00_slow_random.h \
+    Effects/02_dribs.h \
+    Effects/03_rain.h \
+    Effects/04_all_random.h
 
 FORMS += \
         mainwindow.ui

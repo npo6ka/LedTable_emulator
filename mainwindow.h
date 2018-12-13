@@ -10,8 +10,9 @@
 #include <QDebug>
 #include <QTime>
 #include <QSpinBox>
-#include <led_lib.h>
-#include "tablemodes.h"
+//#include <led_lib.h>
+//#include "tablemodes.h"
+#include "Effects/effectslist.h"
 
 class MainWindow : public QWidget
 {
@@ -19,9 +20,10 @@ class MainWindow : public QWidget
     QList<QPushButton*> buttons;
     QTimer *tmr;
     const int size = 10;
-    TableModes *modes;
+    //TableModes *modes;
+    EffectsList *effects;
 public:
-    MainWindow(QWidget *parent = 0);
+    MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 private:
     static void initRand();
@@ -32,7 +34,6 @@ private:
     QLayout *initControlButton();
     QLayout *initDebugInfo();
     void setTimerInterval(int val);
-    void initModes();
 private slots:
     void updateTime();
     void handlePrevModeButton();

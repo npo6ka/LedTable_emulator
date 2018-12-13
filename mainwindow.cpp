@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "animation00.h"
-#include "animation01.h"
+
+#include "timer.h"
 
 #define DEF_TIME_VAL 400
 
@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 {
     initTimer();
     initRand();
+    timer_start();
 
     QLayout *but_mas = MainWindow::initButtonMassive();
     QLayout *con_pan = MainWindow::initControlPanel();
@@ -20,14 +21,8 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
     setLayout(mainLayout);
 
     init_leds(buttons);
-    initModes();
-}
-
-void MainWindow::initModes()
-{
-    modes = new TableModes();
-    modes->addMode(new Animation01());
-    modes->addMode(new Animation00());
+    initMatrix();
+    effects = new EffectsList();
 }
 
 void MainWindow::initTimer()
@@ -52,9 +47,9 @@ QLayout *MainWindow::initButtonMassive()
     const QSize btnSize = QSize(50, 50);
     const QColor *bgColor = new QColor(0, 0, 255);
 
-    buttons.reserve(size * size);
-    for (int i = 0; i < size; ++i) {
-        for (int j = 0; j < size; ++j) {
+    buttons.reserve(WIDTH * HEIGHT);
+    for (int i = 0; i < WIDTH; ++i) {
+        for (int j = 0; j < HEIGHT; ++j) {
             QPushButton *button = new QPushButton(QString("%1").arg(i * size + j));
             button->setFixedSize(btnSize);
             button->setStyleSheet(QString("background-color: %1").arg(bgColor->name()));
@@ -156,45 +151,45 @@ void MainWindow::initRand()
 
 void MainWindow::updateTime()
 {
-    modes->on_tick();
-    led_show();
+    effects->getCurEffect()->on_tick();
+    effects->getCurEffect()->show();
 }
 
 MainWindow::~MainWindow() {}
 
 void MainWindow::handlePrevModeButton()
 {
-    modes->prevMode();
+    effects->prevEffect();
 }
 
 void MainWindow::handleNextModeButton()
 {
-    modes->nextMode();
+    effects->nextEffect();
 }
 
 void MainWindow::handleLeftContButton()
 {
-    out("left control");
+    qDebug() << "left control";
 }
 
 void MainWindow::handleRightContButton()
 {
-    out("right control");
+    qDebug() << "right control";
 }
 
 void MainWindow::handleUpContButton()
 {
-    out("up control");
+    qDebug() << "up control";
 }
 
 void MainWindow::handleDownContButton()
 {
-    out("down control");
+    qDebug() << "down control";
 }
 
 void MainWindow::handleMidContButton()
 {
-    out("middle control");
+    qDebug() << "middle control";
 }
 
 void MainWindow::checkboxDebugClicked(bool flag)
