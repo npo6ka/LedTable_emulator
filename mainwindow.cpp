@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
     initTimer();
     initRand();
     timer_start();
+    randomInit();
 
     QLayout *but_mas = MainWindow::initButtonMassive();
     QLayout *con_pan = MainWindow::initControlPanel();

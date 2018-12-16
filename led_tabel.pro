@@ -60,7 +60,14 @@ HEADERS += \
     Effects/00_slow_random.h \
     Effects/02_dribs.h \
     Effects/03_rain.h \
-    Effects/04_all_random.h
+    Effects/04_all_random.h \
+    Effects/05_show.h \
+    Effects/06_fire.h \
+    Effects/07_the_matrix.h \
+    Effects/08_simple_balls.h \
+    Effects/09_confetti.h \
+    Effects/10_starfall.h \
+    Effects/11_dynamic_square.h
 
 FORMS += \
         mainwindow.ui

@@ -10,6 +10,9 @@ public:
     Effect() { }
     virtual void on_tick() = 0;
     virtual void on_init() {}
+    virtual void on_clear() {
+        FastLED.clear();
+    }
     virtual void show() {
         FastLED.show();
     }

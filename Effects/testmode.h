@@ -4,7 +4,15 @@
 
 class TestMode : public Effect
 {
-    uint8_t step = 2;
+    struct Box {
+        uint16_t height, width;
+        uint16_t xPos, yPos;
+        uint8_t hue;
+        uint8_t speed;
+    };
+
+    uint16_t hiWidth = 256 * WIDTH;
+    uint16_t hiHeight = 256 * HEIGHT;
 
 public:
     TestMode() {}
@@ -14,38 +22,38 @@ public:
     }
 
     void on_tick() {
-        int i;
 
-        for (i = 0; i < LEDS_CNT; i++) {
-            getPix(i / 10, i % 10) = CRGB(random8(255), random8(255), random8(255));
+        Box box;
+
+        box.height = 1;
+        box.width = 3 * 256;
+        box.xPos = 0;
+        box.yPos = 5;
+        box.speed = 16;
+
+        hi(box);
+    }
+
+    void hi(Box b) {
+        int y = b.yPos;
+        for (uint16_t x = b.xPos; x < hiWidth; x+= b.speed) {
+
+            FastLED.clear();
+
+            for (int boxwidth = 0; boxwidth <= b.width; boxwidth++) {
+                uint16_t actualPixel = (x + boxwidth) >> 8;
+                uint16_t actualBrightness = (x + boxwidth) & 0xFF;
+                renderIfVisible(actualPixel, 0, CHSV(b.hue, 255, 255 - actualBrightness));
+            }
+
+            LEDS.show();
         }
     }
+
+    //                renderIfVisible((x >> 8), y, CHSV(b.hue, 255, 255 - x & 0xFF));
+    //                renderIfVisible((x + b.width) >> 8, y, CHSV(b.hue, 255, x & 0xFF));
+
+    void renderIfVisible(uint16_t x, uint16_t y, CHSV chsv) {
+        getPix(x, y) += chsv;
+    }
 };
-
-
-/*
-#define lenght 3
-#define radius HOR_LED_CNT / 2
-#define tick sup_val[0]
-
-void animation_04()
-{
-  int i;
-  byte cur_ring;
-  int step = 255 / lenght;
-  led_clear();
-
-  for (i = lenght - 1; i >= 0; --i) {
-      cur_ring = (byte)(tick - i) % 10;
-      led_drow_rectangle(0 + cur_ring, 0 + cur_ring, HOR_LED_CNT - cur_ring - 1, VER_LED_CNT - cur_ring - 1, 0, 0, 255 - step * i, SET);
-  }
-
-  tick = (tick + 1) % 100;
-  delay(150);
-}
-
-#undef lenght
-#undef radius
-#undef tick
-
-*/
