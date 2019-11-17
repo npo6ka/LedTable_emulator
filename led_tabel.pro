@@ -32,7 +32,8 @@ SOURCES += \
     FastLED/hsv2rgb.cpp \
     matrixlib.cpp \
     Effects/effectslist.cpp \
-    showmatrix.cpp
+    showmatrix.cpp \
+    FastLED/noise.c
 
 HEADERS += \
         mainwindow.h \
@@ -70,6 +71,7 @@ HEADERS += \
     Effects/11_dynamic_square.h \
     Effects/_sphere.h \
     Effects/lamp_din_point.h \
+    FastLED/noise.h
 
 FORMS += \
         mainwindow.ui

@@ -33,7 +33,7 @@
 //#include "pixelset.h"
 //#include "colorpalettes.h"
 
-//#include "noise.h"
+#include "noise.h"
 //#include "power_mgt.h"
 
 

@@ -33,6 +33,8 @@ void EffectsList::init() {
     if (eff == NULL) {
         setErrorEffect();
     } else {
+        curNum = amnt;
+        setEffect(eff);
         amnt += 1;
     }
 }
@@ -76,7 +78,7 @@ Effect *EffectsList::getNewEffectInstance(int num) {
 }
 
 void EffectsList::setErrorEffect() {
-    if (getCurEffect()) free(curEffect);
+    clearCurEffect();
     curEffect = new ErrorEffect();
 }
 
@@ -95,18 +97,22 @@ void EffectsList::clearCurEffect() {
 }
 
 void EffectsList::setEffect(int num) {
+    setEffect(getNewEffectInstance(num));
+    curNum = num;
+}
+
+void EffectsList::setEffect(Effect *eff) {
     clearCurEffect();
 
-    curEffect = getNewEffectInstance(num);
-
+    curEffect = eff;
     if (curEffect == NULL) {
         setErrorEffect();
+        curNum = -1;
         return;
     }
 
     curEffect->on_clear();
     curEffect->on_init();
-    curNum = num;
 }
 
 void EffectsList::nextEffect() {

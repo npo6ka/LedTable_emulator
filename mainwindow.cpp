@@ -29,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 void MainWindow::initTimer()
 {
     tmr = new QTimer();
-    connect(tmr, SIGNAL(timeout()), this, SLOT(updateTime()));
+    connect(tmr, SIGNAL(timeout()), this, SLOT(on_tick()));
     setTimerInterval(DEF_TIME_VAL);
 }
 
@@ -150,10 +150,9 @@ void MainWindow::initRand()
     qsrand((uint)time.msec());
 }
 
-void MainWindow::updateTime()
+void MainWindow::on_tick()
 {
     Effect *eff = effects->getCurEffect();
-    eff->on_clear();
     eff->on_update();
     eff->on_render();
 }

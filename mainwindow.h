@@ -35,7 +35,7 @@ private:
     QLayout *initDebugInfo();
     void setTimerInterval(int val);
 private slots:
-    void updateTime();
+    void on_tick();
     void handlePrevModeButton();
     void handleNextModeButton();
     void handleLeftContButton();

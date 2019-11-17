@@ -11,6 +11,7 @@ private:
     int curNum = 0;
 
     void init();
+    void setEffect(Effect *eff);
 
 public:
     Effect *curEffect;
