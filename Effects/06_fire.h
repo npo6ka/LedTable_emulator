@@ -43,7 +43,7 @@ public:
         memset(matrixValue, 0, sizeof(matrixValue));
     }
 
-    void on_tick() {
+    void on_update() {
         if (pcnt >= 100) {
             shiftUp();
             generateLine();

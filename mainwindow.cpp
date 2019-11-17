@@ -152,8 +152,10 @@ void MainWindow::initRand()
 
 void MainWindow::updateTime()
 {
-    effects->getCurEffect()->on_tick();
-    effects->getCurEffect()->show();
+    Effect *eff = effects->getCurEffect();
+    eff->on_clear();
+    eff->on_update();
+    eff->on_render();
 }
 
 MainWindow::~MainWindow() {}

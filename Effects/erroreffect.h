@@ -12,7 +12,7 @@ public:
 
     }
 
-    void show() {
+    void on_update() {
         FastLED.showColor(CRGB::Red);
     }
 };

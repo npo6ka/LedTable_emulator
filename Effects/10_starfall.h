@@ -14,7 +14,7 @@ public:
 
     }
 
-    void on_tick() {
+    void on_update() {
         // заполняем головами комет левую и верхнюю линию
         for (uint8_t i = HEIGHT / 2; i < HEIGHT; i++) {
             if (!getPixColor(0, i)

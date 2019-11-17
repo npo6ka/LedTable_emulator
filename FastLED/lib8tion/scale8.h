@@ -91,7 +91,7 @@ LIB8STATIC_ALWAYS_INLINE uint8_t scale8_LEAVING_R1_DIRTY( uint8_t i, fract8 scal
 /// If you are doing several 'scale8's in a row, use this, and
 /// then explicitly call cleanup_R1.
 
-LIB8STATIC_ALWAYS_INLINE void nscale8_LEAVING_R1_DIRTY( uint8_t& i, fract8 scale)
+LIB8STATIC_ALWAYS_INLINE void nscale8_LEAVING_R1_DIRTY(uint8_t& i, fract8 scale)
 {
 #if (FASTLED_SCALE8_FIXED == 1)
     i = (((uint16_t)i) * ((uint16_t)(scale)+1)) >> 8;

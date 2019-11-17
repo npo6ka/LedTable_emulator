@@ -10,7 +10,7 @@ class SimpleRainbow : public Effect
 public:
     SimpleRainbow() {}
 
-    void on_tick() {
+    void on_update() {
         uint8_t x, y;
         tick = tick % (MAX_HSV + 1);
 

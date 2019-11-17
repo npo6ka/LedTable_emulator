@@ -2,7 +2,7 @@
 #define EFFECTSLIST_H
 
 #include "effect.h"
-#include "Effects/erroreffect.h"
+#include "erroreffect.h"
 
 class EffectsList
 {
@@ -10,7 +10,7 @@ private:
 
     int curNum = 0;
 
-    void setEffAmnt();
+    void init();
 
 public:
     Effect *curEffect;
@@ -20,7 +20,8 @@ public:
 
     void setErrorEffect();
     Effect *getCurEffect();
-    Effect *getEffect(int num);
+    Effect *getNewEffectInstance(int num);
+    void clearCurEffect();
     void setEffect(int num);
     int getCurEffectNum();
     void nextEffect();

@@ -9,7 +9,7 @@ class Rain : public Effect
 public:
     Rain() {}
 
-    void on_tick() {
+    void on_update() {
         int i, j;
 
         for (i = 0; i < WIDTH; ++i) {

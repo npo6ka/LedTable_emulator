@@ -15,29 +15,29 @@
 
 #include "testmode.h"
 
-
-void EffectsList::setEffAmnt() {
-    int cnt = 0;
-    Effect *eff = getEffect(cnt);
-
-    while(eff != NULL) {
-        free(eff);
-        cnt++;
-        eff = getEffect(cnt);
-    }
-    amnt = cnt;
-}
+#define MAX_EFFECTS 50
 
 EffectsList::EffectsList() {
-    setEffAmnt();
-    if (amnt > 0) {
-        setEffect(0);
-    } else {
+    init();
+}
+
+void EffectsList::init() {
+    int amnt = MAX_EFFECTS;
+    Effect *eff = NULL;
+
+    while(eff == NULL && amnt >= 0) {
+        amnt--;
+        eff = getNewEffectInstance(amnt);
+    }
+
+    if (eff == NULL) {
         setErrorEffect();
+    } else {
+        amnt += 1;
     }
 }
 
-Effect *EffectsList::getEffect(int num) {
+Effect *EffectsList::getNewEffectInstance(int num) {
     switch (num) {
     case 0:
         return new TestMode();
@@ -76,7 +76,7 @@ Effect *EffectsList::getEffect(int num) {
 }
 
 void EffectsList::setErrorEffect() {
-    if (curEffect) free(curEffect);
+    if (getCurEffect()) free(curEffect);
     curEffect = new ErrorEffect();
 }
 
@@ -84,10 +84,20 @@ Effect *EffectsList::getCurEffect() {
     return curEffect;
 }
 
-void EffectsList::setEffect(int num) {
-    free(curEffect);
+int EffectsList::getCurEffectNum() {
+    return curNum;
+}
 
-    curEffect = getEffect(num);
+void EffectsList::clearCurEffect() {
+    if (getCurEffect()) {
+        free(curEffect);
+    }
+}
+
+void EffectsList::setEffect(int num) {
+    clearCurEffect();
+
+    curEffect = getNewEffectInstance(num);
 
     if (curEffect == NULL) {
         setErrorEffect();
@@ -97,10 +107,6 @@ void EffectsList::setEffect(int num) {
     curEffect->on_clear();
     curEffect->on_init();
     curNum = num;
-}
-
-int EffectsList::getCurEffectNum() {
-    return curNum;
 }
 
 void EffectsList::nextEffect() {
@@ -119,6 +125,7 @@ void EffectsList::prevEffect() {
     }
 }
 
+//перезапустить текущий эффект
 void EffectsList::reloadCurEff() {
     setEffect(curNum);
 }

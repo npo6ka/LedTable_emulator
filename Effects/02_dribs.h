@@ -14,7 +14,7 @@ public:
 
     }
 
-    void on_tick() {
+    void on_update() {
         for (int i = 0; i < WIDTH;  ++i) {
             if (cur_drib[i] == 0 && random8(40) == 0) {
                 cur_drib[i] = 1;

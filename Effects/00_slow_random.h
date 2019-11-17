@@ -39,7 +39,7 @@ public:
         }
     }
 
-    void on_tick() {
+    void on_update() {
         uint8_t i, j, buf;
 
         for (i = 0; i < WIDTH; i++) {

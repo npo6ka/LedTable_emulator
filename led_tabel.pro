@@ -67,7 +67,9 @@ HEADERS += \
     Effects/08_simple_balls.h \
     Effects/09_confetti.h \
     Effects/10_starfall.h \
-    Effects/11_dynamic_square.h
+    Effects/11_dynamic_square.h \
+    Effects/_sphere.h \
+    Effects/lamp_din_point.h \
 
 FORMS += \
         mainwindow.ui

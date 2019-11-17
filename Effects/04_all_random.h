@@ -13,7 +13,7 @@ public:
 
     }
 
-    void on_tick() {
+    void on_update() {
         int i;
 
         for (i = 0; i < LEDS_CNT; i++) {

@@ -17,7 +17,7 @@ public:
 
     }
 
-    void on_tick() {
+    void on_update() {
         static uint8_t cur_ring = 0;
 
         CRGB color = CHSV(hsv, 255, 255);

@@ -1,6 +1,4 @@
-#ifndef HSV2RGB_H
-#define HSV2RGB_H
-
+#pragma once
 
 #include "FastLED/FastLED.h"
 
@@ -85,5 +83,3 @@ void hsv2rgb_raw(const struct CHSV* phsv, struct CRGB * prgb, int numLeds);
 //   approximation, and the less accurate the results.
 //
 CHSV rgb2hsv_approximate( const CRGB& rgb);
-
-#endif // HSV2RGB_H

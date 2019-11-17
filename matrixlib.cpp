@@ -6,14 +6,14 @@ static CRGB leds[LEDS_CNT];
 
 void initMatrix() {
     if (WIDTH < 0 || WIDTH > 0xff || HEIGHT < 0 || HEIGHT > 0xff) {
-        qDebug("Value out of range in function initMatrix", WIDTH, HEIGHT);
+        qDebug() << "Value out of range in function initMatrix" << WIDTH << HEIGHT;
     }
     FastLED.addLeds(leds, LEDS_CNT).setCorrection( TypicalLEDStrip );
 }
 
 int getPixNum(int x, int y) {
     if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) {
-        qDebug("Value out of range in function getPixNum", x, y);
+        qDebug() <<"Value out of range in function getPixNum" << x << y;
     }
 
     return (WIDTH * HEIGHT - (y * WIDTH + x + 1));
@@ -21,7 +21,7 @@ int getPixNum(int x, int y) {
 
 CRGB &getPix(int x, int y) {
     if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) {
-        qDebug("Value out of range in function getPix", x, y);
+        qDebug() << "Value out of range in function getPix" << x << y;
         return leds[0];
     }
 
@@ -34,7 +34,7 @@ uint32_t getPixColor(CRGB val) {
 
 uint32_t getPixColor(int x, int y) {
     if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) {
-        qDebug("Value out of range in function getPixColor", x, y);
+        qDebug() << "Value out of range in function getPixColor" << x << y;
         return 0;
     }
 
@@ -43,7 +43,8 @@ uint32_t getPixColor(int x, int y) {
 
 void setPixColor(int x, int y, CRGB color) {
     if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) {
-        qDebug("Value out of range in function setPixColor", x, y);
+        qDebug() << "Value out of range in function setPixColor" << x << y;
+        return;
     }
 
     getPix(x, y) = color;
