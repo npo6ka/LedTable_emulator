@@ -1,8 +1,8 @@
-/*#define FASTLED_INTERNAL
+#define FASTLED_INTERNAL
 #include "FastLED.h"
 #include <string.h>
 
-#define P(x) FL_PGM_READ_BYTE_NEAR(p + x)
+#define P(x) p[x]
 
 static uint8_t const p[] = { 151,160,137,91,90,15,
    131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,8,99,37,240,21,10,23,
@@ -703,4 +703,3 @@ void fill_2dnoise16(CRGB *leds, int width, int height, bool serpentine,
     }
   }
 }
-*/

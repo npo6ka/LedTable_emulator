@@ -22,7 +22,7 @@ EffectsList::EffectsList() {
 }
 
 void EffectsList::init() {
-    int amnt = MAX_EFFECTS;
+    amnt = MAX_EFFECTS;
     Effect *eff = NULL;
 
     while(eff == NULL && amnt >= 0) {
@@ -42,7 +42,7 @@ void EffectsList::init() {
 Effect *EffectsList::getNewEffectInstance(int num) {
     switch (num) {
     case 0:
-        return new TestMode();
+        return new DynamicSquare();
     case 1:
         return new SlowRandom();
     case 2:
@@ -66,7 +66,7 @@ Effect *EffectsList::getNewEffectInstance(int num) {
     case 11:
         return new Starfall();
     case 12:
-        return new DynamicSquare();
+        return new TestMode();
     /*case 13:
         return new Rain();
     case 14:

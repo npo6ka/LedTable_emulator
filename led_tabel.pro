@@ -33,7 +33,7 @@ SOURCES += \
     matrixlib.cpp \
     Effects/effectslist.cpp \
     showmatrix.cpp \
-    FastLED/noise.c
+    FastLED/noise.cpp
 
 HEADERS += \
         mainwindow.h \
