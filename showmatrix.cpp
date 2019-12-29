@@ -1,11 +1,13 @@
 #include "showmatrix.h"
+#include "matrixlib.h"
 
 //основной массив со значениями цветов светодиодов
 //Каждый тик его содержимое рисует на led матрице при помощи функции led_show()
 static QList<QPushButton*> ledButtons;
+static QColor screen[HEIGHT][WIDTH];
 
 //показывать текстовую информацию поверх ячеек стола
-static bool debug_text = true;
+static bool debug_text = false;
 
 void set_debug_text_flag(bool flag)
 {
@@ -17,7 +19,7 @@ void init_leds(QList<QPushButton*> buttons)
     ledButtons = buttons;
 }
 
-void setPixColor(uint8_t num, uint8_t r, uint8_t g, uint8_t b)
+void draw_pixel(uint8_t num, uint8_t r, uint8_t g, uint8_t b)
 {
     QPushButton *but = ledButtons[num];
     but->setAutoFillBackground(true);

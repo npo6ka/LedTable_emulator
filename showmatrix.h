@@ -5,4 +5,4 @@
 
 void set_debug_text_flag(bool flag);
 void init_leds(QList<QPushButton*> buttons);
-void setPixColor(uint8_t num, uint8_t r, uint8_t g, uint8_t b);
+void draw_pixel(uint8_t num, uint8_t r, uint8_t g, uint8_t b);

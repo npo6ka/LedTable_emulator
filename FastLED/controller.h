@@ -45,9 +45,9 @@ protected:
     ///@param nLeds the numner of leds to set to this color
     ///@param scale the rgb scaling value for outputting color
     void showColor(const struct CRGB & data, int nLeds, CRGB scale) {
-        for (int i = 0; i < nLeds; ++i) {
-            setPixColor(i, data.r, data.g, data.b);
-        }
+        /*for (int i = 0; i < nLeds; ++i) {
+            draw_pixel(i, data[i].r, data.g, data.b);
+        }*/
     }
 
     /// write the passed in rgb data out to the leds managed by this controller
@@ -56,7 +56,7 @@ protected:
     ///@param scale the rgb scaling to apply to each led before writing it out
     void show(const struct CRGB *data, int nLeds, CRGB scale) {
         for (int i = 0; i < nLeds; ++i) {
-            setPixColor(i, data[i].r, data[i].g, data[i].b);
+            draw_pixel(i, data[i].r, data[i].g, data[i].b);
         }
     }
 

@@ -67,7 +67,7 @@ Effect *EffectsList::getNewEffectInstance(int num) {
         return new Starfall();
     case 12:
         return new TestMode();
-    /*case 13:
+        /*case 13:
         return new Rain();
     case 14:
         return new Rain();*/

@@ -4,32 +4,59 @@
 
 class Snow : public Effect
 {
-    uint8_t step = 2;
-    int density = 10;
+    uint8_t step;
+    uint8_t tick;
+    int density;
+    bool direction;
 
 public:
     Snow() {}
 
     void on_init() {
-
+        step = 20;
+        density = 10;
+        tick = 0;
+        direction = false;
     }
 
     void on_update() {
-        // сдвигаем всё вниз
-        for (uint8_t x = 0; x < WIDTH; x++) {
-            for (uint8_t y = 0; y < HEIGHT - 1; y++) {
-                setPixColor(x, y, getPixColor(x, y + 1));
-            }
-        }
+        if (tick >= step) {
+            direction = !direction;
+            // сдвигаем вниз
+            for (int8_t x = HEIGHT - 1; x >= 0; x--) {
+                bool dir = direction;
 
-        for (uint8_t x = 0; x < WIDTH; x++) {
-            // заполняем случайно верхнюю строку
-            // а также не даём двум блокам по вертикали вместе быть
-            if (getPixColor(x, HEIGHT - 2) == 0 && (random8(density) == 0)) {
-                setPixColor(x, HEIGHT - 1, 0xE0FFFF - 0x101010 * random8(4));
-            } else {
-                setPixColor(x, HEIGHT - 1, 0x000000);
+                for (uint8_t y = 0; y < WIDTH; y++) {
+                    //out("%d %d %x\n", x, y, getPixColor(x, y));
+                    if (getPixColor(x, y)) {
+                        if (x - 1 >= 0) {
+                            if (dir) {
+                                if (y + 1 < WIDTH) setPixColor(x - 1, y + 1, getPixColor(x, y));
+                            } else {
+                                if (y - 1 >= 0) setPixColor(x - 1, y - 1, getPixColor(x, y));
+                            }
+                            dir = !dir;
+                        }
+
+                        setPixColor(x, y, 0);
+                    }
+                }
             }
+
+            for (uint8_t x = 0; x < WIDTH - 1; x++) {
+                // заполняем случайно верхнюю строку
+                // а также не даём двум блокам по вертикали вместе быть
+                if (getPixColor(HEIGHT - 2, x) == 0 && (random(0, density) == 0)) {
+                    setPixColor(HEIGHT - 1, x, 0xE0FFFF - 0x101010 * random(0, 4));
+                    x++;
+                } else {
+                    setPixColor(HEIGHT - 1, x, 0x000000);
+                }
+            }
+
+            tick = 0;
+        } else {
+            tick++;
         }
     }
 };

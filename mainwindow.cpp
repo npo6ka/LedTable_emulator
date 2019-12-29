@@ -3,7 +3,7 @@
 
 #include "timer.h"
 
-#define DEF_TIME_VAL 400
+#define DEF_TIME_VAL 60
 
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
 {
@@ -33,11 +33,11 @@ void MainWindow::initTimer()
     setTimerInterval(DEF_TIME_VAL);
 }
 
-void MainWindow::setTimerInterval(int val)
+void MainWindow::setTimerInterval(double val)
 {
     tmr->stop();
     if (val > 0) {
-        tmr->setInterval((int) ((float) 10000 / val));
+        tmr->setInterval(1000.0 / val);
         tmr->start();
     }
 }
@@ -128,15 +128,15 @@ QLayout *MainWindow::initDebugInfo()
 {
     QVBoxLayout *layout = new QVBoxLayout;
     QCheckBox *checkbox = new QCheckBox("debug label", this);
-    checkbox->setChecked(true);
+    checkbox->setChecked(false);
 
-    QSpinBox *spinbox = new QSpinBox;
+    QDoubleSpinBox *spinbox = new QDoubleSpinBox;
     spinbox->setMinimum(0);
-    spinbox->setMaximum(1200);
+    spinbox->setMaximum(120);
     spinbox->setValue(DEF_TIME_VAL);
 
     connect(checkbox, SIGNAL(clicked(bool)), this, SLOT(checkboxDebugClicked(bool)));
-    connect(spinbox, SIGNAL(valueChanged(int)), this, SLOT(spinboxValueChanged(int)));
+    connect(spinbox, SIGNAL(valueChanged(double)), this, SLOT(spinboxValueChanged(double)));
 
     layout->addWidget(checkbox);
     layout->addWidget(spinbox);
@@ -199,7 +199,7 @@ void MainWindow::checkboxDebugClicked(bool flag)
     set_debug_text_flag(flag);
 }
 
-void MainWindow::spinboxValueChanged(int val)
+void MainWindow::spinboxValueChanged(double val)
 {
     setTimerInterval(val);
 }

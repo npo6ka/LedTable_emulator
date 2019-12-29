@@ -33,7 +33,7 @@ private:
     QLayout *initModeButton();
     QLayout *initControlButton();
     QLayout *initDebugInfo();
-    void setTimerInterval(int val);
+    void setTimerInterval(double val);
 private slots:
     void on_tick();
     void handlePrevModeButton();
@@ -44,7 +44,7 @@ private slots:
     void handleDownContButton();
     void handleMidContButton();
     void checkboxDebugClicked(bool flag);
-    void spinboxValueChanged(int val);
+    void spinboxValueChanged(double val);
 };
 
 #endif // MAINWINDOW_H
