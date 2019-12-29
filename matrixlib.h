@@ -15,12 +15,12 @@
 
 void initMatrix();
 
-int getPixNum(int x, int y);
+int getPixNum(const uint8_t x, const uint8_t y);
 
-CRGB &getPix(int x, int y);
+CRGB &getPix(const uint8_t x, const uint8_t y);
 uint32_t getPixColor(CRGB val);
-uint32_t getPixColor(int x, int y);
-void setPixColor(int x, int y, CRGB color);
+uint32_t getPixColor(const uint8_t x, const uint8_t y);
+void setPixColor(const uint8_t x, const uint8_t y, CRGB color);
 CRGB* getLeds(void);
 uint8_t pgm_read_byte(const uint8_t *val);
 

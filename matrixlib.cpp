@@ -11,16 +11,16 @@ void initMatrix() {
     FastLED.addLeds(leds, LEDS_CNT).setCorrection( TypicalLEDStrip );
 }
 
-int getPixNum(int x, int y) {
-    if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) {
+int getPixNum(const uint8_t x, const uint8_t y) {
+    if (x < 0 || x >= HEIGHT || y < 0 || y >= WIDTH) {
         qDebug() <<"Value out of range in function getPixNum" << x << y;
     }
 
-    return (WIDTH * HEIGHT - (y * WIDTH + x + 1));
+    return (x * WIDTH + y);
 }
 
-CRGB &getPix(int x, int y) {
-    if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) {
+CRGB &getPix(const uint8_t x, const uint8_t y) {
+    if (x < 0 || x >= HEIGHT || y < 0 || y >= WIDTH) {
         qDebug() << "Value out of range in function getPix" << x << y;
         return leds[0];
     }
@@ -32,8 +32,8 @@ uint32_t getPixColor(CRGB val) {
     return (((uint32_t)val.r << 16) | ((uint16_t)val.g << 8 ) | val.b);
 }
 
-uint32_t getPixColor(int x, int y) {
-    if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) {
+uint32_t getPixColor(const uint8_t x, const uint8_t y) {
+    if (x < 0 || x >= HEIGHT || y < 0 || y >= WIDTH) {
         qDebug() << "Value out of range in function getPixColor" << x << y;
         return 0;
     }
@@ -41,8 +41,8 @@ uint32_t getPixColor(int x, int y) {
     return getPixColor(getPix(x, y));
 }
 
-void setPixColor(int x, int y, CRGB color) {
-    if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) {
+void setPixColor(const uint8_t x, const uint8_t y, CRGB color) {
+    if (x < 0 || x >= HEIGHT || y < 0 || y >= WIDTH) {
         qDebug() << "Value out of range in function setPixColor" << x << y;
         return;
     }
@@ -79,8 +79,8 @@ uint8_t random(uint8_t min, uint8_t lim) {
 }
 
 void fader(uint8_t step) {
-  for (uint8_t i = 0; i < WIDTH; i++) {
-    for (uint8_t j = 0; j < HEIGHT; j++) {
+  for (uint8_t i = 0; i < HEIGHT; i++) {
+    for (uint8_t j = 0; j < WIDTH; j++) {
       fadePix(i, j, step);
     }
   }
