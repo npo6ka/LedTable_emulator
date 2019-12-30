@@ -13,7 +13,7 @@
 #include "10_starfall.h"
 #include "11_dynamic_square.h"
 
-#include "testmode.h"
+//#include "testmode.h"
 
 #define MAX_EFFECTS 50
 
@@ -22,6 +22,7 @@ EffectsList::EffectsList() {
 }
 
 void EffectsList::init() {
+    curEffect = NULL;
     amnt = MAX_EFFECTS;
     Effect *eff = NULL;
 
@@ -65,8 +66,8 @@ Effect *EffectsList::getNewEffectInstance(int num) {
         return new Confetti();
     case 11:
         return new Starfall();
-    case 12:
-        return new TestMode();
+    // case 12:
+    //     return new TestMode();
         /*case 13:
         return new Rain();
     case 14:
@@ -92,7 +93,8 @@ int EffectsList::getCurEffectNum() {
 
 void EffectsList::clearCurEffect() {
     if (getCurEffect()) {
-        free(curEffect);
+        delete curEffect;
+        curEffect = NULL;
     }
 }
 

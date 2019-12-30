@@ -1,7 +1,7 @@
 #define FASTLED_INTERNAL
-#include "fastled.h"
+#include "FastLED.h"
 
-#define NULL nullptr
+//#define NULL nullptr
 
 void *pSmartMatrix = NULL;
 

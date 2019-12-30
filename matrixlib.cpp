@@ -62,21 +62,21 @@ void randomInit() {
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
 }
 
-uint8_t random() {
-    return qrand() % 255;
-}
+// uint8_t random() {
+//     return qrand() % 255;
+// }
 
-uint8_t random(uint8_t lim) {
-    uint8_t r = random();
-    r = (r*lim) >> 8;
-    return r;
-}
+// uint8_t random(uint8_t lim) {
+//     uint8_t r = random();
+//     r = (r*lim) >> 8;
+//     return r;
+// }
 
-uint8_t random(uint8_t min, uint8_t lim) {
-    uint8_t delta = lim - min;
-    uint8_t r = random(delta) + min;
-    return r;
-}
+// uint8_t random(uint8_t min, uint8_t lim) {
+//     uint8_t delta = lim - min;
+//     uint8_t r = random(delta) + min;
+//     return r;
+// }
 
 void fader(uint8_t step) {
   for (uint8_t i = 0; i < HEIGHT; i++) {

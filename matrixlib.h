@@ -1,7 +1,7 @@
 #ifndef MATRIXLIB_H
 #define MATRIXLIB_H
 
-#include "FastLED/fastled.h"
+#include "FastLED/FastLED.h"
 
 #define WIDTH 16
 #define HEIGHT 16
@@ -9,9 +9,9 @@
 #define MAX_BRIGHTNESS 255
 #define MAX_HSV 255
 
-#define NULL nullptr
+//#define NULL nullptr
 #define PROGMEM
-#define random8 random
+#define random random8
 
 void initMatrix();
 
@@ -25,9 +25,9 @@ CRGB* getLeds(void);
 uint8_t pgm_read_byte(const uint8_t *val);
 
 void randomInit(void);
-uint8_t random(void);
-uint8_t random(uint8_t lim);
-uint8_t random(uint8_t min, uint8_t lim);
+// uint8_t random(void);
+// uint8_t random(uint8_t lim);
+// uint8_t random(uint8_t min, uint8_t lim);
 
 void fader(uint8_t step);
 void fadePix(uint8_t x, uint8_t y, uint8_t step);
