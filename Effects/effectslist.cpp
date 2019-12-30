@@ -2,6 +2,7 @@
 
 #include "00_slow_random.h"
 #include "01_simple_rainbow.h"
+//#include "_loading_point.h"
 
 #include "testmode.h"
 
@@ -39,6 +40,8 @@ Effect *EffectsList::getNewEffectInstance(int num) {
         return new SimpleRainbow();
     case 2:
         return new TestMode();
+    /*case 3:
+        return new LoadingPoint();*/
     default:
         return NULL;
     }
