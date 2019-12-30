@@ -13,7 +13,7 @@
 #include "10_starfall.h"
 #include "11_dynamic_square.h"
 
-//#include "testmode.h"
+#include "testmode.h"
 
 #define MAX_EFFECTS 50
 
@@ -66,13 +66,10 @@ Effect *EffectsList::getNewEffectInstance(int num) {
         return new Confetti();
     case 11:
         return new Starfall();
-    // case 12:
-    //     return new TestMode();
-        /*case 13:
-        return new Rain();
-    case 14:
+    case 12:
+        return new TestMode();
+    /*case 13:
         return new Rain();*/
-    //синусоида с рандомными параметрами
     default:
         return NULL;
     }

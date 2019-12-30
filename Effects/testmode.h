@@ -2,72 +2,17 @@
 
 #include "Effects/effect.h"
 
-#define ACCURACY 100
-#define RAINBOW_TICK_SIZE 4
-
-typedef struct Point
-{
-    int32_t x;
-    int32_t y;
-    uint8_t hue;
-    uint32_t pr; //point_radius
-    uint32_t br; //bright_radius
-} Point;
-
 class TestMode : public Effect
 {
     uint8_t tick;
-    Point p1;
-    uint32_t rot;
-    uint32_t v;
-
-private:
-    static float get_func_brithtness(uint32_t distance, Point pnt)
-    {
-        if (distance <= pnt.pr) {
-            return 1;
-        } else if (distance >= pnt.pr + pnt.br) {
-            return 0;
-        } else {
-            float val = (float)(distance - pnt.pr) / pnt.br;
-            return ( 7.3890560 /* e^2 */ ) / (50 * val + 7) - 0.13;
-        }
-    }
-
-    static void render_point(Point pnt)
-    {
-      int i, j;
-      for (i = 0; i < WIDTH; ++i) {
-        for(j = 0; j < HEIGHT; ++j) {
-          int loc_x = i * ACCURACY + ACCURACY / 2;
-          int loc_y = j * ACCURACY + ACCURACY / 2;
-
-          uint32_t distance = 0;//sqrt((loc_x - pnt.x) * (loc_x - pnt.x) + (loc_y - pnt.y) * (loc_y - pnt.y));
-
-          float bright = get_func_brithtness(distance, pnt) * 0.2;
-          CRGB clr = getPix(i, j);
-          CRGB pnt_clr = CHSV(pnt.hue, 255, 255);
-          clr.r = qadd8(clr.r, (float)pnt_clr.r * bright);
-          clr.g = qadd8(clr.g, (float)pnt_clr.g * bright);
-          clr.b = qadd8(clr.b, (float)pnt_clr.b * bright);
-          setPixColor(i, j, clr);
-        }
-      }
-    }
 
 public:
     TestMode() {}
+    ~TestMode() {}
+
 
     void on_init() {
         tick = 0;
-        rot = 0;
-        v = 1;
-
-        p1.x = 550;
-        p1.y = 550;
-        p1.hue = 0;
-        p1.pr = 400;
-        p1.br = 200;
     }
 
     //tick 0-255
@@ -76,16 +21,8 @@ public:
     }
 
     void on_update(void) {
-        float angle = get_pi_tick(tick);
-        float radius = 0.9;
-        p1.x = ACCURACY * WIDTH * (radius * cos(angle) + 1) / 2;
-        p1.y = ACCURACY * HEIGHT * (radius * sin(angle) + 1) / 2;
-        p1.hue++;
-
-        // FastLED.clear();
-        fader(5);
-        render_point(p1);
-        tick = tick + 3;
+        tick = (tick + 1) % 256;
+        getPix(0, 0) = 0xff0000 + tick & 0xff;
     }
 };
 
