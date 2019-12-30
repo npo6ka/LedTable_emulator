@@ -59,7 +59,6 @@ HEADERS += \
     Effects/testmode.h \
     Effects/01_simple_rainbow.h \
     Effects/00_slow_random.h \
-    Effects/02_dribs.h \
     Effects/03_rain.h \
     Effects/04_all_random.h \
     Effects/05_show.h \
