@@ -49,8 +49,8 @@ QLayout *MainWindow::initButtonMassive()
     const QColor *bgColor = new QColor(0, 0, 255);
 
     buttons.reserve(WIDTH * HEIGHT);
-    for (int i = 0; i < WIDTH; ++i) {
-        for (int j = 0; j < HEIGHT; ++j) {
+    for (int i = 0; i < HEIGHT; ++i) {
+        for (int j = 0; j < WIDTH; ++j) {
             QPushButton *button = new QPushButton(QString("%1").arg(i * size + j));
             button->setFixedSize(btnSize);
             button->setStyleSheet(QString("background-color: %1").arg(bgColor->name()));
