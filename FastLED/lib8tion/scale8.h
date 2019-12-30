@@ -2,7 +2,7 @@
 #define __INC_LIB8TION_SCALE_H
 
 #include <stdint.h>
-#include "FastLed/fastled_config.h"
+#include "FastLED/fastled_config.h"
 
 #define LIB8STATIC __attribute__ ((unused)) static inline
 #define LIB8STATIC_ALWAYS_INLINE __attribute__ ((always_inline)) static inline

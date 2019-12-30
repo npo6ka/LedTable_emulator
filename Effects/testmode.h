@@ -42,7 +42,7 @@ private:
           int loc_x = i * ACCURACY + ACCURACY / 2;
           int loc_y = j * ACCURACY + ACCURACY / 2;
 
-          uint32_t distance = sqrt((loc_x - pnt.x) * (loc_x - pnt.x) + (loc_y - pnt.y) * (loc_y - pnt.y));
+          uint32_t distance = 0;//sqrt((loc_x - pnt.x) * (loc_x - pnt.x) + (loc_y - pnt.y) * (loc_y - pnt.y));
 
           float bright = get_func_brithtness(distance, pnt) * 0.2;
           CRGB clr = getPix(i, j);
