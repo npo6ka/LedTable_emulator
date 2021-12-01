@@ -14,7 +14,7 @@ public:
     DynamicSquare() {}
 
     void on_init() {
-        set_fps(12);
+//        set_fps(12);
     }
 
     void draw_rectangle(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, CRGB color) {

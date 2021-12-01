@@ -24,6 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+    Effects/18_mouse.cpp \
         main.cpp \
         mainwindow.cpp \
     FastLED/fastled.cpp \
@@ -38,6 +39,9 @@ SOURCES += \
 HEADERS += \
     Effects/02_dribs.h \
     Effects/04_all_random.h \
+    Effects/05_snow.h \
+    Effects/06_fire.h \
+    Effects/18_mouse.h \
         mainwindow.h \
     animation02.h \
     FastLED/fastled.h \
@@ -67,9 +71,6 @@ HEADERS += \
     Effects/06_fire.h \
     Effects/07_the_matrix.h \
     Effects/08_simple_balls.h \
-    Effects/09_confetti.h \
-    Effects/10_starfall.h \
-    Effects/11_dynamic_square.h \
     FastLED/noise.h
 
 FORMS += \

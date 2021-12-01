@@ -11,7 +11,7 @@ public:
     Starfall () {}
 
     void on_init() {
-        set_fps(20);
+//        set_fps(20);
     }
 
     void on_update() {
