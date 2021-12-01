@@ -36,6 +36,8 @@ SOURCES += \
     FastLED/noise.cpp
 
 HEADERS += \
+    Effects/02_dribs.h \
+    Effects/04_all_random.h \
         mainwindow.h \
     animation02.h \
     FastLED/fastled.h \

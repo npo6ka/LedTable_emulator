@@ -12,13 +12,14 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent)
     timer_start();
     randomInit();
 
+    this->setStyleSheet("background-color: black;");
+
     QLayout *but_mas = MainWindow::initButtonMassive();
     QLayout *con_pan = MainWindow::initControlPanel();
 
     QHBoxLayout *mainLayout = new QHBoxLayout;
     mainLayout->addLayout(but_mas);
     mainLayout->addLayout(con_pan);
-
     setLayout(mainLayout);
 
     init_leds(buttons);
@@ -47,7 +48,6 @@ QLayout *MainWindow::initButtonMassive()
     QGridLayout *layout = new QGridLayout;
     const QSize btnSize = QSize(50, 50);
     const QColor *bgColor = new QColor(0, 0, 255);
-
     buttons.reserve(WIDTH * HEIGHT);
     for (int i = 0; i < HEIGHT; ++i) {
         for (int j = 0; j < WIDTH; ++j) {
@@ -87,6 +87,10 @@ QLayout *MainWindow::initModeButton()
     connect(left_button, SIGNAL (released()), this, SLOT (handlePrevModeButton()));
     connect(right_button, SIGNAL (released()), this, SLOT (handleNextModeButton()));
 
+    QString qss = QString("background-color: %1").arg("white");
+    left_button->setStyleSheet(qss);
+    right_button->setStyleSheet(qss);
+
     layout->addWidget(left_button);
     layout->addWidget(right_button);
 
@@ -111,6 +115,13 @@ QLayout *MainWindow::initControlButton()
     sline->addWidget(middle_button);
     sline->addWidget(right_button);
     tline->addWidget(down_button);
+
+    QString qss = QString("background-color: %1").arg("white");
+    up_button->setStyleSheet(qss);
+    left_button->setStyleSheet(qss);
+    middle_button->setStyleSheet(qss);
+    right_button->setStyleSheet(qss);
+    down_button->setStyleSheet(qss);
 
     connect(left_button, SIGNAL (released()), this, SLOT (handleLeftContButton()));
     connect(right_button, SIGNAL (released()), this, SLOT (handleRightContButton()));
@@ -138,8 +149,13 @@ QLayout *MainWindow::initDebugInfo()
     connect(checkbox, SIGNAL(clicked(bool)), this, SLOT(checkboxDebugClicked(bool)));
     connect(spinbox, SIGNAL(valueChanged(double)), this, SLOT(spinboxValueChanged(double)));
 
+    QString qss = QString("background-color: %1").arg("white");
+    checkbox->setStyleSheet(qss);
+    spinbox->setStyleSheet(qss);
+
     layout->addWidget(checkbox);
     layout->addWidget(spinbox);
+
 
     return layout;
 }

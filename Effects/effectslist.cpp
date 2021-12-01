@@ -2,6 +2,9 @@
 
 #include "00_slow_random.h"
 #include "01_simple_rainbow.h"
+#include "02_dribs.h"
+#include "03_rain.h"
+#include "04_all_random.h"
 //#include "_loading_point.h"
 
 #include "testmode.h"
@@ -39,7 +42,11 @@ Effect *EffectsList::getNewEffectInstance(int num) {
     case 1:
         return new SimpleRainbow();
     case 2:
-        return new TestMode();
+        return new Dribs();
+    case 3:
+        return new Rain();
+    case 4:
+        return new AllRandom();
     /*case 3:
         return new LoadingPoint();*/
     default:
